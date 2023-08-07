@@ -1,1 +1,6 @@
-a2luZDogQmFja2VuZApuYW1lOiBhd3MtYmFja2VuZApwcm92aWRlcjogczMKc3BlYzoKICBidWNrZXQ6IGNkZXYtc3RhdGUKICByZWdpb246IGV1LWNlbnRyYWwtMQo=
+kind: Backend
+name: aws-backend
+provider: s3
+spec:
+  bucket: cdev-state
+  region: eu-central-1
