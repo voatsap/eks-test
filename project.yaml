@@ -1,1 +1,7 @@
-YmFja2VuZDogYXdzLWJhY2tlbmQKa2luZDogUHJvamVjdApuYW1lOiBkZXYKdmFyaWFibGVzOgogIG9yZ2FuaXphdGlvbjogbXktY29tcGFueQogIHJlZ2lvbjogZXUtY2VudHJhbC0xCiAgc3RhdGVfYnVja2V0X25hbWU6IGNkZXYtc3RhdGUK
+backend: aws-backend
+kind: Project
+name: dev
+variables:
+  organization: my-company
+  region: eu-central-1
+  state_bucket_name: cdev-state
