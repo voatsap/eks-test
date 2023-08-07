@@ -1,1 +1,31 @@
-YmFja2VuZDogYXdzLWJhY2tlbmQKY2xpVmVyc2lvbjogJz49IDAuNy4xNCcKa2luZDogU3RhY2sKbmFtZTogY2x1c3Rlcgp0ZW1wbGF0ZTogLi4vCnZhcmlhYmxlczoKICBjbHVzdGVyX25hbWU6IGRlbW8KICBkb21haW46IGNsdXN0ZXIuZGV2CiAgZWtzX21hbmFnZWRfbm9kZV9ncm91cHM6CiAgICB3b3JrZXJzOgogICAgICBjYXBhY2l0eV90eXBlOiBTUE9UCiAgICAgIGRlc2lyZWRfc2l6ZTogMgogICAgICBkaXNrX3NpemU6IDgwCiAgICAgIGZvcmNlX3VwZGF0ZV92ZXJzaW9uOiB0cnVlCiAgICAgIGlhbV9yb2xlX2FkZGl0aW9uYWxfcG9saWNpZXM6CiAgICAgICAgZWJzcG9saWN5OiBhcm46YXdzOmlhbTo6YXdzOnBvbGljeS9zZXJ2aWNlLXJvbGUvQW1hem9uRUJTQ1NJRHJpdmVyUG9saWN5CiAgICAgIGluc3RhbmNlX3R5cGVzOgogICAgICAtIHQzLnhsYXJnZQogICAgICAtIG01LnhsYXJnZQogICAgICBsYWJlbHM6IHt9CiAgICAgIG1heF9zaXplOiAzCiAgICAgIG1pbl9zaXplOiAyCiAgICAgIG5hbWU6IHNwb3Qtd29ya2VycwogICAgICBzdWJuZXRfaWRzOiAne3sgcmVtb3RlU3RhdGUgImNsdXN0ZXIudnBjLnByaXZhdGVfc3VibmV0cyIgfX0nCiAgICAgIHRhaW50czogW10KICAgICAgdXBkYXRlX2NvbmZpZzoKICAgICAgICBtYXhfdW5hdmFpbGFibGU6IDEKICBla3NfdmVyc2lvbjogJzEuMjYnCiAgZW52aXJvbm1lbnQ6IGRlbW8tZW52CiAgb3JnYW5pemF0aW9uOiBteS1jb21wYW55CiAgcmVnaW9uOiBldS1jZW50cmFsLTEK
+backend: aws-backend
+cliVersion: '>= 0.7.14'
+kind: Stack
+name: cluster
+template: ../
+variables:
+  cluster_name: demo
+  domain: cluster.dev
+  eks_managed_node_groups:
+    workers:
+      capacity_type: SPOT
+      desired_size: 2
+      disk_size: 80
+      force_update_version: true
+      iam_role_additional_policies:
+        ebspolicy: arn:aws:iam::aws:policy/service-role/AmazonEBSCSIDriverPolicy
+      instance_types:
+      - t3.xlarge
+      - m5.xlarge
+      labels: {}
+      max_size: 3
+      min_size: 2
+      name: spot-workers
+      subnet_ids: '{{ remoteState "cluster.vpc.private_subnets" }}'
+      taints: []
+      update_config:
+        max_unavailable: 1
+  eks_version: '1.26'
+  environment: demo-env
+  organization: my-company
+  region: eu-central-1
