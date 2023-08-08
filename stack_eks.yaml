@@ -28,4 +28,4 @@ variables:
   eks_version: '1.26'
   environment: demo-env
   organization: shalb
-  region: us-east-1
+  region: us-east-2
