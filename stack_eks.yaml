@@ -27,5 +27,5 @@ variables:
         max_unavailable: 1
   eks_version: '1.26'
   environment: demo-env
-  organization: shalb
-  region: us-east-1
+  organization: my-company
+  region: eu-central-1
