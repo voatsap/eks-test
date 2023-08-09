@@ -1,0 +1,28 @@
+
+name: ClusterDev Plan for my-project
+
+on:
+  push:
+    branches:
+      - 'cluster.dev-*'
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  plan:
+    runs-on: ubuntu-latest
+    container: clusterdev/cluster.dev:v0.7.18
+    steps:
+    - name: Check out code
+      uses: actions/checkout@v2
+
+    - name: Run ClusterDev Plan
+      run: |
+        cd .cluster.dev/my-project
+        ls
+        echo $TEST
+        cdev plan
+      env:
+        TEST: "${ vars.TEST }"
+    
