@@ -1,0 +1,7 @@
+backend: aws-backend
+kind: Project
+name: shalb
+variables:
+  organization: cluster.dev
+  region: af-south-1
+  state_bucket_name: cdev-state
