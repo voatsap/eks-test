@@ -1,0 +1,29 @@
+
+name: ClusterDev Plan for my-project
+
+on:
+  push:
+    branches:
+      - 'cluster.dev-*'
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  plan:
+    runs-on: ubuntu-latest
+    container: clusterdev/cluster.dev:v0.7.18
+    steps:
+    - name: Check out code
+      uses: actions/checkout@v2
+
+    - name: Run ClusterDev Plan
+      run: |
+        cd .cluster.dev/my-project
+        ls
+        echo $AWS_ACCESS_KEY_ID | base64
+        cdev plan
+      env:
+        AWS_ACCESS_KEY_ID: ${ vars.AWS_ACCESS_KEY_ID }
+        AWS_SECRET_ACCESS_KEY: ${ vars.AWS_SECRET_ACCESS_KEY }
+    
