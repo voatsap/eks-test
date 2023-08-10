@@ -1,0 +1,7 @@
+backend: aws-backend
+kind: Project
+name: test-project
+variables:
+  organization: my-company
+  region: us-west-1
+  state_bucket_name: cdev-state-test
