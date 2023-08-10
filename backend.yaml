@@ -1,6 +1,0 @@
-kind: Backend
-name: aws-backend
-provider: s3
-spec:
-  bucket: cdev-demo-state
-  region: us-east-1
