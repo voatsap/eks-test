@@ -1,7 +1,0 @@
-backend: aws-backend
-kind: Project
-name: conf8
-variables:
-  organization: configure8
-  region: eu-central-1
-  state_bucket_name: cdev-state-conf8
