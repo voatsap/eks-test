@@ -1,0 +1,6 @@
+kind: Backend
+name: aws-backend
+provider: s3
+spec:
+  bucket: cdev-state-gogo
+  region: eu-central-1
