@@ -31,4 +31,4 @@ variables:
   eks_version: '1.26'
   environment: demo-env
   organization: configure8
-  region: eu-central-1
+  region: us-east-1

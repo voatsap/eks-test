@@ -3,4 +3,4 @@ name: aws-backend
 provider: s3
 spec:
   bucket: cdev-state-config8
-  region: eu-central-1
+  region: us-east-1

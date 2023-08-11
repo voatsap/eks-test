@@ -3,5 +3,5 @@ kind: Project
 name: config8
 variables:
   organization: configure8
-  region: eu-central-1
+  region: us-east-1
   state_bucket_name: cdev-state-config8
