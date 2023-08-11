@@ -6,9 +6,13 @@ on:
     branches:
       - 'cluster.dev-*'
       - main
+    paths:
+      - '.cluster.dev/config8/**'
   pull_request:
     branches:
       - main
+    paths:
+      - '.cluster.dev/config8/**'
 
 jobs:
   plan:
