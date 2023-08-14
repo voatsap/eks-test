@@ -1,0 +1,7 @@
+backend: aws-backend
+kind: Project
+name: sp-project
+variables:
+  organization: sp-company
+  region: eu-central-1
+  state_bucket_name: cdev-state-sp
