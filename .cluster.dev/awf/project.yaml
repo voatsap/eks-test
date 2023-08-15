@@ -1,0 +1,7 @@
+backend: aws-backend
+kind: Project
+name: awf
+variables:
+  organization: awf
+  region: eu-central-1
+  state_bucket_name: cdev-state-awf
