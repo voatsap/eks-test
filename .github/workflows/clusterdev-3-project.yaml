@@ -1,0 +1,51 @@
+
+name: Cluster.dev for 3-project
+
+on:
+  push:
+    branches:
+      - 'cluster.dev-*'
+      - main
+    paths:
+      - '.cluster.dev/3-project/**'
+  pull_request:
+    branches:
+      - main
+    paths:
+      - '.cluster.dev/3-project/**'
+
+jobs:
+  plan:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    container: clusterdev/cluster.dev:v0.7.18
+    steps:
+    - name: Check out code
+      uses: actions/checkout@v3
+
+    - name: Run ClusterDev Plan
+      run: |
+        cd .cluster.dev/3-project
+        aws s3 mb s3://cdev-state || true
+        cdev plan
+      env:
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        AWS_DEFAULT_REGION: eu-central-1
+  apply:
+    if: github.event_name == 'push' && contains(github.ref, 'refs/heads/main')  # Runs only on push to main branch
+    runs-on: ubuntu-latest
+    container: clusterdev/cluster.dev:v0.7.18
+    steps:
+    - name: Check out code
+      uses: actions/checkout@v3
+
+    - name: Run ClusterDev Apply
+      run: |
+        cd .cluster.dev/3-project
+        cdev plan --force
+      env:
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        AWS_DEFAULT_REGION: eu-central-1
+    
