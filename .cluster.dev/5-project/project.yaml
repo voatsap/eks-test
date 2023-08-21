@@ -1,0 +1,7 @@
+backend: aws-backend
+kind: Project
+name: 5-project
+variables:
+  organization: 5-company
+  region: eu-central-1
+  state_bucket_name: cdev-state
